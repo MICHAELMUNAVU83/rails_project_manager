@@ -1,25 +1,30 @@
 <p id="notice"><%= notice %></p>
+<div class="d-flex justify-content-center">
 
-<p>
-  <b>Name:</b>
-  <%= @task.name %>
-</p>
+   <div>
+    <p>
+      <b>Name:</b>
+      <%= @task.name %>
+    </p>
+    <div>
 
-<p>
-  <b>Description:</b>
-  <%= @task.description %>
-</p>
+    <div>
 
-<p>
-  <b>Status:</b>
-  <%= @task.status %>
-</p>
+    <p>
+      <b>Description:</b>
+       <%= @task.description %>
+    </p>
+    <div>
+    <div>
 
-<p>
-  <b>Project:</b>
-  <%= @task.project %>
-</p>
+    <p>
+       <b>Status:</b>
+       <%= @task.status %>
+    </p>
+    <div>
+</div>
 
 
-<%= link_to 'Edit', edit_project_task_path(@task.project, @task) %> |
-<%= link_to 'Back', project_tasks_path(@task.project) %>
+
+<%= link_to 'Edit', edit_project_task_path(@task.project, @task) , class: "btn btn-dark" %> |
+<%= link_to 'Back', project_path(@task.project) , class: "btn btn-dark" %>

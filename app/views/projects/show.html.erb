@@ -1,39 +1,54 @@
+<div class="d-flex  justify-content-center">
+
 <p style="color: green"><%= notice %></p>
+<div class="my-4">
 
-<%= render @project %>
-
-<div>
-  <%= link_to "Edit this project", edit_project_path(@project) %> |
-  <%= link_to "Back to projects", projects_path %>
-
-  <%= button_to "Destroy this project", @project, method: :delete %>
+    <%= render "projects/shownproject", project: @project %>
+    
+<div class="my-4">
+  <%= button_to "Destroy this project", @project, method: :delete , class: "btn btn-danger" %>
 </div>
-<h1>Listing tasks</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Status</th>
-    <th>Project</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<% if !@project.tasks.empty? %>
+<h1>Tasks for <%= @project.name %></h1>
+
+
+<table class="table">
+  <thead class="thead-dark">
+   <tr>
+       <th scope="col">Name</th>
+       <th scope="col">Description</th>
+       <th scope="col">Status</th>
+       <th scope="col">Show</th>
+       <th scope="col">Delete</th>
+   </tr>
+  </thead>
+  <tbody>
 
 <% @project.tasks.each do |task| %>
   <tr>
     <td><%= task.name %></td>
     <td><%= task.description %></td>
     <td><%= task.status %></td>
-    <td><%= task.project %></td>
-    <td><%= link_to 'Show', [task.project, task] %></td>
-    <td><%= link_to 'Edit', edit_project_task_path(task.project, task) %></td>
-    <td><%= link_to 'Destroy', [task.project, task], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', [task.project, task] , class: "btn btn-success text-light" %></td>
+    <td><%= button_to 'Destroy', [task.project, task], method: :delete , class: "btn btn-danger" %></td>
+   
+   
   </tr>
 <% end %>
+</tbody>
 </table>
 
 <br />
+<%= link_to 'Create a new task', new_project_task_path(@project) , class: "btn btn-primary" %>
+<br/>
 
-<%= link_to 'New Task', new_project_task_path(@project.id) %>
+<% else %>
+<div>
+    <p>There are no tasks for this project</p>
+    <%= link_to 'Create a new task', new_project_task_path(@project) , class: "btn btn-primary" %>
+</div>
+<% end %>
+
+</div>
+

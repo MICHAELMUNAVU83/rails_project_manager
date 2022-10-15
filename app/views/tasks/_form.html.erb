@@ -17,13 +17,13 @@
   </div>
   <div class="field">
     <%= f.label :description %><br />
-    <%= f.text_area :description %>
+    <%= f.text_area :description , class: "w-100" %>
   </div>
   <div class="field">
     <%= f.label :status %><br />
     <%= f.select :status, Task::STATUS_OPTIONS %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-success my-4" %>
   </div>
 <% end %>

@@ -1,14 +1,25 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Projects</h1>
+<h1 class="d-flex justify-content-center text-decoration-underline"> MY PROJECTS</h1>
 
-<div id="projects">
+<% if !@projects.empty? %>
+
+<div id="projects" class="d-flex flex-row flex-wrap justify-content-around">
   <% @projects.each do |project| %>
     <%= render project %>
-    <p>
-      <%= link_to "Show this project", project %>
-    </p>
+    
   <% end %>
 </div>
+<% else %>
+  <div class="d-flex justify-content-center">
+    <h2>There are no projects , Add One Now !</h2>
+  </div>  
+ 
+<% end %>
 
-<%= link_to "New project", new_project_path %>
+<div class="d-flex justify-content-center mt-5">
+
+
+
+    <%= link_to "New project", new_project_path , class: "btn btn-primary" %>
+</div>
