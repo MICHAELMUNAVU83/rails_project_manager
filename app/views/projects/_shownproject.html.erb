@@ -1,11 +1,10 @@
-
 <div class="card" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title"> <%= project.name %> </h5>
     
     <p class="card-text"> <%= project.description %></p>
-    <%= link_to 'Show', project_path(project), class: "btn btn-info" %>
     <%= link_to 'Edit', edit_project_path(project), class: "btn btn-dark" %>
+   
 
   </div>
 </div>
