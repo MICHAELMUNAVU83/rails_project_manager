@@ -10,33 +10,34 @@
 </div>
 
 <% if !@project.tasks.empty? %>
-<h1>Listing tasks</h1>
+<h1>Tasks for <%= @project.name %></h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Status</th>
-    <th>Project</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+
+<table class="table">
+  <thead class="thead-dark">
+   <tr>
+       <th scope="col">Name</th>
+       <th scope="col">Description</th>
+       <th scope="col">Status</th>
+       <th scope="col">Action</th>
+   </tr>
+  </thead>
+  <tbody>
 
 <% @project.tasks.each do |task| %>
   <tr>
     <td><%= task.name %></td>
     <td><%= task.description %></td>
     <td><%= task.status %></td>
-    <td><%= task.project %></td>
-    <td><%= link_to 'Show', [task.project, task] %></td>
-    <td><%= link_to 'Edit', edit_project_task_path(task.project, task) %></td>
-    <td><%= link_to 'Destroy', [task.project, task], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', [task.project, task] , class: "btn btn-success text-light" %></td>
   </tr>
 <% end %>
+</tbody>
 </table>
 
 <br />
+<%= link_to 'Create a new task', new_project_task_path(@project) , class: "btn btn-primary" %>
+<br/>
 
 <% else %>
 <div>
@@ -46,3 +47,4 @@
 <% end %>
 
 </div>
+
