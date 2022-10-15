@@ -28,7 +28,7 @@ class TasksController < ApplicationController
 
 
     if @task.save
-      redirect_to([@task.project, @task], notice: 'Task was successfully created.')
+      redirect_to([@task.project], notice: 'Task was successfully created.')
     else
       render action: 'new'
     end
@@ -37,7 +37,7 @@ class TasksController < ApplicationController
   # PUT projects/1/tasks/1
   def update
     if @task.update_attributes(task_params)
-      redirect_to([@task.project, @task], notice: 'Task was successfully updated.')
+      redirect_to([@task.project], notice: 'Task was successfully updated.')
     else
       render action: 'edit'
     end
