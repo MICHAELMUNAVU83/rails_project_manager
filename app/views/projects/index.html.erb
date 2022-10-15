@@ -2,12 +2,20 @@
 
 <h1 class="d-flex justify-content-center text-decoration-underline"> MY PROJECTS</h1>
 
+<% if !@projects.empty? %>
+
 <div id="projects" class="d-flex flex-row flex-wrap justify-content-around">
   <% @projects.each do |project| %>
     <%= render project %>
     
   <% end %>
 </div>
+<% else %>
+  <div class="d-flex justify-content-center">
+    <h2>There are no projects , Add One Now !</h2>
+  </div>  
+ 
+<% end %>
 
 <div class="d-flex justify-content-center mt-5">
 

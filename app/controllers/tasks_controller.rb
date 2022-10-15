@@ -25,8 +25,6 @@ class TasksController < ApplicationController
   def create
    @task = Task.new(task_params)
     @task.project_id = @project.id
-
-
     if @task.save
       redirect_to([@task.project])
     else
@@ -36,18 +34,17 @@ class TasksController < ApplicationController
 
   # PUT projects/1/tasks/1
   def update
-    if @task.update_attributes(task_params)
-      redirect_to([@task.project], notice: 'Task was successfully updated.')
-    else
-      render action: 'edit'
-    end
+    @task.project_id = @project.id
+    @task.update(task_params)
+    redirect_to([@task.project])
+    
+   
   end
 
   # DELETE projects/1/tasks/1
   def destroy
     @task.destroy
-
-    redirect_to project_tasks_url(@project)
+    redirect_to([@task.project])
   end
 
   private

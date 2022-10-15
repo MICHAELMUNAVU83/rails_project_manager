@@ -19,7 +19,8 @@
        <th scope="col">Name</th>
        <th scope="col">Description</th>
        <th scope="col">Status</th>
-       <th scope="col">Action</th>
+       <th scope="col">Show</th>
+       <th scope="col">Delete</th>
    </tr>
   </thead>
   <tbody>
@@ -30,6 +31,9 @@
     <td><%= task.description %></td>
     <td><%= task.status %></td>
     <td><%= link_to 'Show', [task.project, task] , class: "btn btn-success text-light" %></td>
+    <td><%= button_to 'Destroy', [task.project, task], method: :delete , class: "btn btn-danger" %></td>
+   
+   
   </tr>
 <% end %>
 </tbody>
