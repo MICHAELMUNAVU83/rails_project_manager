@@ -1,11 +1,10 @@
 class TasksController < ApplicationController
   before_action :set_project
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
 
   # GET projects/1/tasks
   def index
-    @tasks = @project.tasks
+   @tasks = Task.where(project_id: @project.id)
   end
 
   # GET projects/1/tasks/1
@@ -14,7 +13,8 @@ class TasksController < ApplicationController
 
   # GET projects/1/tasks/new
   def new
-    @task = @project.tasks.build
+    @task = Task.new
+    @task.project_id = @project.id
   end
 
   # GET projects/1/tasks/1/edit
@@ -23,7 +23,9 @@ class TasksController < ApplicationController
 
   # POST projects/1/tasks
   def create
-    @task = @project.tasks.build(task_params)
+   @task = Task.new(task_params)
+    @task.project_id = @project.id
+
 
     if @task.save
       redirect_to([@task.project, @task], notice: 'Task was successfully created.')
@@ -55,11 +57,11 @@ class TasksController < ApplicationController
     end
 
     def set_task
-      @task = @project.tasks.find(params[:id])
+      @task = Task.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
     def task_params
-      params.require(:task).permit(:name, :description, :status, :project_id)
+      params.require(:task).permit(:name, :description, :status)
     end
 end
