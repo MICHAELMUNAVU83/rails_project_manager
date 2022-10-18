@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
     <% if user_signed_in? %> 
-     <h2 class="navbar-brand" > Welcome ,<%= current_user.name %> </h2>
+     <h2 > Welcome ,<%= current_user.name %> </h2>
     <% else %>
       <h2 class="navbar-brand"> Not a member ? <h2>
     <% end %>   

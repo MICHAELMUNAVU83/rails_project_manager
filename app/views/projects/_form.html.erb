@@ -10,24 +10,25 @@
       </ul>
     </div>
   <% end %>
+
+
+<div>
+<%= form.label :name, style: "display: block" , class: "w-100" %>
+<%= form.text_field :name %>
+</div>
+
+<div>
+ <%= form.label :description, style: "display: block" %>
+ <%= form.text_area :description, class: "w-100" %>
+
+</div>
+<div class="my-4">
+  <%= form.submit class: "btn btn-success" %>
+</div>
     
 
-    <form class="w-50">
-     <div class="w-50">
- 
-           <%= form.label :name  %>
-            <%= form.text_field :name , class: "form-control" , placeholder: "Enter the name of the project" %>
-          
-    </div>
-     <div class="w-50">
-      <%= form.label :description  %>
-       <%= form.text_area :description ,class: "form-control" , placeholder: "Enter description" %>
-       <small id="emailHelp" class="form-text text-muted">Make it pretty descriptive</small>
-     </div>
-     <%= form.submit class: "btn btn-primary my-3"  %>
-    
-   </form>
 
   
  
 <% end %>
+

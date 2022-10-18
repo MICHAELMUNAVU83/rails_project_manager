@@ -1,9 +1,12 @@
-<h1 class="mx-5">New project</h1>
+<h1 class="d-flex justify-content-center">New project</h1>
+
+
+<div class="d-flex  justify-content-center">
 
 <%= render "form", project: @project %>
-
+</div>
 <br>
 
-<div>
-  <%= link_to "Back to projects", projects_path %>
+<div class="d-flex justify-content-center">
+  <%= link_to "Back to projects", projects_path, class: "btn btn-dark" %>
 </div>
